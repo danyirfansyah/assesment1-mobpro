@@ -93,11 +93,10 @@ fun AboutScreen(navController: NavHostController) {
                 style = MaterialTheme.typography.bodyMedium
             )
 
-            // Add the PNG image here
             Image(
-                painter = painterResource(id = R.drawable.wkeenan), // Replace with your image resource name
-                contentDescription = "Calculator image", // Description for accessibility
-                modifier = Modifier.padding(top = 5.dp) // Optional padding for the image
+                painter = painterResource(id = R.drawable.wkeenan),
+                contentDescription = "Calculator image",
+                modifier = Modifier.padding(top = 5.dp)
             )
 
             Text(
