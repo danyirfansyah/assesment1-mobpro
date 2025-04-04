@@ -5,7 +5,6 @@
     <string name="reset">Reset</string>
     <string name="input_invalid">Tidak boleh kosong.</string>
     <string name="bagikan">Bagikan</string>
-    <string name="bagikan_template">Panjang: %1$s cm\nLebar: %2$s cm\nLuas: %3$.2f cm\nKeliling: %4$.2f cm</string>
     <string name="tentang_aplikasi">Tentang Aplikasi</string>
     <string name="copyright">Aplikasi Kalkulator sederhana ini dirancang untuk mempermudah perhitungan dasar.
         Dengan fitur-fitur seperti penjumlahan, pengurangan, perkalian, dan pembagian, alat ini dapat membantu

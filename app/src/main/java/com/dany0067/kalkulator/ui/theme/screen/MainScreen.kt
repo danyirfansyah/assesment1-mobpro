@@ -224,16 +224,12 @@ fun ScreenContent(
 
                     if (angka1Error || angka2Error) return@Button
 
-                    val a = angka1.toFloat()
-                    val b = angka2.toFloat()
+                    val a = angka1.toDoubleOrNull() ?: 0.0
+                    val b = angka2.toDoubleOrNull() ?: 0.0
 
                     val result = hitung(a, b, mapOperationToEnglish(selectedOperation))
-                    hasil = if (selectedOperation == "/") {
-                        if (result % 1 == 0f) result.toInt().toString()
-                        else DecimalFormat("#.##").format(result)
-                    } else {
-                        result.toInt().toString()
-                    }
+                    hasil = formatResult(result) // Format hasil dengan satu angka di belakang koma
+
                 },
                 modifier = Modifier.weight(1f),
                 contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
@@ -319,14 +315,18 @@ private fun shareData(context: Context, message: String) {
     }
 }
 
-private fun hitung(a: Float, b: Float, op: String): Float {
+private fun hitung(a: Double, b: Double, op: String): Double {
     return when (op) {
         "plus" -> a + b
         "minus" -> a - b
         "multiply" -> a * b
-        "divide" -> a / b
-        else -> 0f
+        "divide" -> if (b != 0.0) a / b else 0.0 // Pembagian menggunakan tipe Double
+        else -> 0.0
     }
+}
+
+private fun formatResult(result: Double): String {
+    return DecimalFormat("0.0").format(result)
 }
 
 @Preview(showBackground = true)
