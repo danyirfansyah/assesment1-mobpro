@@ -79,6 +79,7 @@ fun MainScreen(navController: NavHostController) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(4.dp)
+
                         ) {
                             Switch(
                                 checked = isEnglish,
@@ -226,7 +227,7 @@ fun ScreenContent(
                     val a = angka1.toFloat()
                     val b = angka2.toFloat()
 
-                    val result = hitung(a, b, selectedOperation)
+                    val result = hitung(a, b, mapOperationToEnglish(selectedOperation))
                     hasil = if (selectedOperation == "/") {
                         if (result % 1 == 0f) result.toInt().toString()
                         else DecimalFormat("#.##").format(result)
@@ -282,6 +283,16 @@ fun ScreenContent(
     }
 }
 
+private fun mapOperationToEnglish(operation: String): String {
+    return when (operation) {
+        "Pertambahan" -> "plus"
+        "Pengurangan" -> "minus"
+        "Perkalian" -> "multiply"
+        "Pembagian" -> "divide"
+        else -> ""
+    }
+}
+
 @Composable
 fun IconPicker(isError: Boolean, unit: String) {
     if (isError) {
@@ -317,9 +328,6 @@ private fun hitung(a: Float, b: Float, op: String): Float {
         else -> 0f
     }
 }
-
-
-
 
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
